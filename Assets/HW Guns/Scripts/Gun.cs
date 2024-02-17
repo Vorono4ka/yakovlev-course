@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Gun : MonoBehaviour
 {
-    [SerializeField] private GunBehavior _behavior;
+    [SerializeField] private IGunBehavior _behavior;
     [SerializeField] private Bullet _bullet;
     [SerializeField, Range(1, 100)] private int _maxCharge;
 
@@ -32,7 +32,7 @@ public class Gun : MonoBehaviour
         }
     }
 
-    private void SetBehavior(GunBehavior behavior)
+    private void SetBehavior(IGunBehavior behavior)
     {
         _behavior = behavior;
         _behavior.Initialize(_bullet, _maxCharge);

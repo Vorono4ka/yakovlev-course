@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class PistolBehavior : GunBehavior
+public class PistolBehavior : IGunBehavior
 {
     private Bullet _bulletPrefab;
     private int _charge;

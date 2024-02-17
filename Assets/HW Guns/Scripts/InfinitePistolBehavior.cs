@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class InfinitePistolBehavior : GunBehavior
+public class InfinitePistolBehavior : IGunBehavior
 {
     private Bullet _bulletPrefab;
 

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public interface GunBehavior
+public interface IGunBehavior
 {
     void Initialize(Bullet bullet, int maxCharge);
     bool CanShoot();

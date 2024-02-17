@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class ShotgunBehavior : GunBehavior
+public class ShotgunBehavior : IGunBehavior
 {
     private Vector3 offset = Vector3.left;
 
