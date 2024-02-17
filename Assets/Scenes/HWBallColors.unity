@@ -600,8 +600,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _winText: {fileID: 1802087164}
   _loseText: {fileID: 15287166}
+  _ballCount: {fileID: 937339604}
+  _spawner: {fileID: 319177017}
   _ballLeftFormat: "\u041E\u0441\u0442\u0430\u043B\u043E\u0441\u044C \u0448\u0430\u0440\u043E\u0432:
-    {}"
+    {0}"
 --- !u!1 &402591184
 GameObject:
   m_ObjectHideFlags: 0
@@ -743,7 +745,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 10, y: 0}
-  m_SizeDelta: {x: -210, y: 50}
+  m_SizeDelta: {x: -210.00002, y: 50}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &937339604
 MonoBehaviour:
@@ -880,7 +882,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 20, y: 70}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 160, y: 60}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1223721991
 MonoBehaviour:
