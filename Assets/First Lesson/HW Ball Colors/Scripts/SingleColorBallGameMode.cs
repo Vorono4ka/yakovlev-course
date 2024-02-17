@@ -16,6 +16,12 @@ public class SingleColorBallGameMode : IGameMode
         EventManager.BallsSpawned += OnBallsSpawned;
     }
 
+    public void Deinitialize()
+    {
+        EventManager.BallPicked -= OnBallPicked;
+        EventManager.BallsSpawned -= OnBallsSpawned;
+    }
+
     public int GetBallToWin()
     {
         return _targetBallCount - _pickedBallCount;

@@ -40,6 +40,7 @@ public class GameModeManager : MonoBehaviour
 
     private void SetGameMode(IGameMode gameMode)
     {
+        _gameMode.Deinitialize();
         _spawner.DestroyAllBalls();
         _loseText.SetActive(false);
         _winText.SetActive(false);
