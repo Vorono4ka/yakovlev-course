@@ -28,6 +28,8 @@ public class AllBallGameMode : IGameMode
     {
         _pickedBallCount++;
 
+        EventManager.NotifyBallCountChanged();
+
         if (_pickedBallCount == _targetBallCount)
         {
             EventManager.NotifyWin();

@@ -6,8 +6,7 @@ public class SingleColorBallGameMode : IGameMode
 {
     private int _targetBallCount;
     private int _targetBallType;
-
-    private int _pickedBallCount = 0;
+    private int _pickedBallCount;
     private Dictionary<int, int> _ballsPerTypes;
 
     public void Initialize()
@@ -54,7 +53,6 @@ public class SingleColorBallGameMode : IGameMode
     {
         _ballsPerTypes = ballsPerTypes;
         _targetBallType = -1;
-        _pickedBallCount = 0;
         _targetBallCount = _ballsPerTypes.Min(pair => pair.Value);
     }
 }
