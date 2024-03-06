@@ -5,6 +5,7 @@ public class CharacterView : MonoBehaviour
 {
     private const string IsIdling = "IsIdling";
     private const string IsRunning = "IsRunning";
+    private const string IsWalking = "IsWalking";
     private const string IsMovement = "IsMovement";
     private const string IsGrounded = "IsGrounded";
     private const string IsJumping = "IsJumping";
@@ -23,6 +24,9 @@ public class CharacterView : MonoBehaviour
 
     public void StartRunning() => _animator.SetBool(IsRunning, true);
     public void StopRunning() => _animator.SetBool(IsRunning, false);
+
+    public void StartWalking() => _animator.SetBool(IsWalking, true);
+    public void StopWalking() => _animator.SetBool(IsWalking, false);
 
     public void StartMovement() => _animator.SetBool(IsMovement, true);
     public void StopMovement() => _animator.SetBool(IsMovement, false);

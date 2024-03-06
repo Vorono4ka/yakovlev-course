@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
-public class NPC : MonoBehaviour
+public class NPC : MonoBehaviour, IMovable
 {
     private NPCStateMachine _stateMachine;
     private CharacterController _characterController;
@@ -10,6 +10,9 @@ public class NPC : MonoBehaviour
     [field: SerializeField] public Transform TradingPoint { get; private set; }
     [field: SerializeField] public Transform RestingPoint { get; private set; }
     public CharacterController Controller => _characterController;
+
+    public Transform Transform => transform;
+    public float Speed => Config.Speed;
 
     private void Awake()
     {

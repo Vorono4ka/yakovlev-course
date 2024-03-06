@@ -2,26 +2,22 @@ using UnityEngine;
 
 public class WalkingToTradeState : NPCState
 {
-    private readonly WalkingStateConfig _walkingStateConfig;
+    private readonly NPCWalkingStateConfig _walkingStateConfig;
     private readonly Transform _tradingPoint;
-    private readonly Transform _npcTransform;
+    private readonly SimpleMover _simpleMover;
 
     public WalkingToTradeState(IStateSwitcher stateSwitcher, NPC npc) : base(stateSwitcher, npc)
     {
         _walkingStateConfig = npc.Config.WalkingStateConfig;
         _tradingPoint = npc.TradingPoint;
-        _npcTransform = npc.transform;
+        _simpleMover = new SimpleMover(npc);
     }
 
     public override void Update()
     {
         base.Update();
 
-        Vector3 direction = _tradingPoint.position - Controller.transform.position;
-        direction.y = 0;
-
-        Vector3 moveVector = direction * _walkingStateConfig.Speed * Time.deltaTime;
-        _npcTransform.Translate(moveVector);
+        Vector3 direction = _simpleMover.MoveToTarget(_tradingPoint);
 
         if (direction.magnitude <= _walkingStateConfig.MinDistanceToTarget)
         {

@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94427136bae21f44e8137ca608155cc1, type: 3}
   m_Name: CharacterConfig
   m_EditorClassIdentifier: 
+  <WalkingStateConfig>k__BackingField:
+    <Speed>k__BackingField: 4
   <RunningStateConfig>k__BackingField:
     <Speed>k__BackingField: 8
   <AirbornStateConfig>k__BackingField:

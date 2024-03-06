@@ -29,5 +29,10 @@ public class RunningState : GroundedState
 
         if (IsHorizontalInputZero)
             StateSwitcher.SwitchState<IdlingState>();
+
+        if (Input.Movement.Run.ReadValue<float>() == 0)
+        {
+            StateSwitcher.SwitchState<WalkingState>();
+        }
     }
 }

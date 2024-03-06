@@ -2,26 +2,22 @@ using UnityEngine;
 
 public class WalkingToRestState : NPCState
 {
-    private readonly WalkingStateConfig _walkingStateConfig;
+    private readonly NPCWalkingStateConfig _walkingStateConfig;
     private readonly Transform _restingPoint;
-    private readonly Transform _npcTransform;
+    private readonly SimpleMover _simpleMover;
 
     public WalkingToRestState(IStateSwitcher stateSwitcher, NPC npc) : base(stateSwitcher, npc)
     {
         _walkingStateConfig = npc.Config.WalkingStateConfig;
         _restingPoint = npc.RestingPoint;
-        _npcTransform = npc.transform;
+        _simpleMover = new SimpleMover(npc);
     }
 
     public override void Update()
     {
         base.Update();
 
-        Vector3 direction = _restingPoint.position - Controller.transform.position;
-        direction.y = 0;
-
-        Vector3 moveVector = direction * _walkingStateConfig.Speed * Time.deltaTime;
-        _npcTransform.Translate(moveVector);
+        Vector3 direction = _simpleMover.MoveToTarget(_restingPoint);
 
         if (direction.magnitude <= _walkingStateConfig.MinDistanceToTarget)
         {
