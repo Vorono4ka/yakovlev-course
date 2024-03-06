@@ -1,21 +1,19 @@
 using System.Collections.Generic;
 using System.Linq;
 
-public class CharacterStateMachine : IStateSwitcher
+public class NPCStateMachine : IStateSwitcher
 {
     private readonly List<IState> _states;
     private IState _currentState;
 
-    public CharacterStateMachine(Character character)
+    public NPCStateMachine(NPC npc)
     {
-        StateMachineData data = new();
-
         _states = new List<IState>()
         {
-            new IdlingState(this, data, character),
-            new RunningState(this, data, character),
-            new JumpingState(this, data, character),
-            new FallingState(this, data, character),
+            new RestingState(this, npc),
+            new WalkingToTradeState(this, npc),
+            new WalkingToRestState(this, npc),
+            new TradingState(this, npc),
         };
 
         _currentState = _states[0];
@@ -32,8 +30,5 @@ public class CharacterStateMachine : IStateSwitcher
         _currentState = state;
         _currentState.Enter();
     }
-
-    public void HandleInput() => _currentState.HandleInput();
-
     public void Update() => _currentState.Update();
 }

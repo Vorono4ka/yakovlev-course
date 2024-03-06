@@ -1,4 +1,3 @@
-using System;
 using UnityEngine.InputSystem;
 
 public abstract class GroundedState : MovementState

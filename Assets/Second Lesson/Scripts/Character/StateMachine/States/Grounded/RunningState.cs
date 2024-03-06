@@ -1,6 +1,6 @@
 public class RunningState : GroundedState
 {
-    private RunningStateConfig _runningStateConfig;
+    private readonly RunningStateConfig _runningStateConfig;
 
     public RunningState(IStateSwitcher stateSwitcher, StateMachineData data, Character character) : base(stateSwitcher, data, character)
     {

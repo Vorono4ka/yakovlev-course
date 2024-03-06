@@ -24,7 +24,6 @@ public abstract class MovementState : IState
 
     public virtual void Enter()
     {
-        Debug.Log(GetType());
         AddInputActionsCallbacks();
 
         View.StartMovement();

@@ -5,13 +5,13 @@ public abstract class AirborneState : MovementState
     private readonly AirborneStateConfig _config;
 
     public AirborneState(IStateSwitcher stateSwitcher, StateMachineData data, Character character) : base(stateSwitcher, data, character)
-    {
-        _config = character.Config.AirbornStateConfig;
-    }
+        => _config = character.Config.AirbornStateConfig;
 
     public override void Enter()
     {
         base.Enter();
+
+        Data.Speed = _config.Speed;
 
         View.StartAirborne();
     }
