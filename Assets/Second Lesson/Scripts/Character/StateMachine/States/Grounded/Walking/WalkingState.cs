@@ -1,4 +1,4 @@
-public class WalkingState : GroundedState
+public class WalkingState : MoveState
 {
     private readonly WalkingStateConfig _walkingStateConfig;
 
@@ -30,10 +30,10 @@ public class WalkingState : GroundedState
         if (IsHorizontalInputZero)
             StateSwitcher.SwitchState<IdlingState>();
 
-        // Возможно, стоило сделать это через подписку на событие кнопки, но вдруг игрок отожмёт кнопку во время смены стейтов? Тогда коллбек не придёт и игрок "застрянет" в определенном стейте
-        if (Input.Movement.Run.ReadValue<float>() > 0)
-        {
+        if (IsRunningKeyDown)
             StateSwitcher.SwitchState<RunningState>();
-        }
+
+        if (IsSneakingKeyDown)
+            StateSwitcher.SwitchState<SneakingState>();
     }
 }
