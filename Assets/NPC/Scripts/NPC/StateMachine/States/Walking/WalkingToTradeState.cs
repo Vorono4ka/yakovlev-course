@@ -1,27 +1,30 @@
 using UnityEngine;
 
-public class WalkingToTradeState : NPCState
+namespace Assets.NPC.Scripts.NPC
 {
-    private readonly NPCWalkingStateConfig _walkingStateConfig;
-    private readonly Transform _tradingPoint;
-    private readonly SimpleMover _simpleMover;
-
-    public WalkingToTradeState(IStateSwitcher stateSwitcher, NPC npc) : base(stateSwitcher, npc)
+    public class WalkingToTradeState : NPCState
     {
-        _walkingStateConfig = npc.Config.WalkingStateConfig;
-        _tradingPoint = npc.TradingPoint;
-        _simpleMover = new SimpleMover(npc);
-    }
+        private readonly NPCWalkingStateConfig _walkingStateConfig;
+        private readonly Transform _tradingPoint;
+        private readonly SimpleMover _simpleMover;
 
-    public override void Update()
-    {
-        base.Update();
-
-        Vector3 direction = _simpleMover.MoveToTarget(_tradingPoint);
-
-        if (direction.magnitude <= _walkingStateConfig.MinDistanceToTarget)
+        public WalkingToTradeState(IStateSwitcher stateSwitcher, NPC npc) : base(stateSwitcher, npc)
         {
-            StateSwitcher.SwitchState<TradingState>();
+            _walkingStateConfig = npc.Config.WalkingStateConfig;
+            _tradingPoint = npc.TradingPoint;
+            _simpleMover = new SimpleMover(npc);
+        }
+
+        public override void Update()
+        {
+            base.Update();
+
+            Vector3 direction = _simpleMover.MoveToTarget(_tradingPoint);
+
+            if (direction.magnitude <= _walkingStateConfig.MinDistanceToTarget)
+            {
+                StateSwitcher.SwitchState<TradingState>();
+            }
         }
     }
 }

@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: CharacterConfig
   m_EditorClassIdentifier: 
   <WalkingStateConfig>k__BackingField:
+    <SneakingSpeed>k__BackingField: 2
     <Speed>k__BackingField: 4
-  <RunningStateConfig>k__BackingField:
-    <Speed>k__BackingField: 8
+    <RunningSpeed>k__BackingField: 8
   <AirbornStateConfig>k__BackingField:
     <Speed>k__BackingField: 4
     <JumpingStateConfig>k__BackingField:

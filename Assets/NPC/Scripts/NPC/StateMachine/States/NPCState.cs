@@ -1,30 +1,29 @@
 using UnityEngine;
 
-public abstract class NPCState : IState
+namespace Assets.NPC.Scripts.NPC
 {
-    protected readonly IStateSwitcher StateSwitcher;
-
-    private readonly NPC _npc;
-
-    protected CharacterController Controller => _npc.Controller;
-
-    protected NPCState(IStateSwitcher stateSwitcher, NPC npc)
+    public abstract class NPCState : IState
     {
-        StateSwitcher = stateSwitcher;
-        _npc = npc;
+        protected readonly IStateSwitcher StateSwitcher;
+
+        private readonly NPC _npc;
+
+        protected CharacterController Controller => _npc.Controller;
+
+        protected NPCState(IStateSwitcher stateSwitcher, NPC npc)
+        {
+            StateSwitcher = stateSwitcher;
+            _npc = npc;
+        }
+
+        public virtual void Enter()
+        {
+        }
+
+        public virtual void Exit()
+        {
+        }
+
+        public virtual void Update() { }
     }
-
-    public virtual void Enter() 
-    {
-        Debug.Log("State entered: " + GetType());
-    }
-
-    public virtual void Exit() 
-    {
-        Debug.Log("State exited: " + GetType());
-    }
-
-    public virtual void HandleInput() { }
-
-    public virtual void Update() { }
 }

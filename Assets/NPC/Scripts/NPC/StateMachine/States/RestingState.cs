@@ -1,33 +1,36 @@
 using UnityEngine;
 
-public class RestingState : NPCState
+namespace Assets.NPC.Scripts.NPC
 {
-    private readonly RestingStateConfig _restingStateConfig;
-
-    private Timer _timer;
-
-    public RestingState(IStateSwitcher stateSwitcher, NPC npc) : base(stateSwitcher, npc)
+    public class RestingState : NPCState
     {
-        _restingStateConfig = npc.Config.RestingStateConfig;
-        _timer = new Timer();
-    }
+        private readonly RestingStateConfig _restingStateConfig;
 
-    public override void Enter()
-    {
-        base.Enter();
+        private Timer _timer;
 
-        _timer.Reset(_restingStateConfig.RestingTime);
-    }
-
-    public override void Update()
-    {
-        base.Update();
-
-        _timer.Update(Time.deltaTime);
-
-        if (_timer.IsRunning() == false)
+        public RestingState(IStateSwitcher stateSwitcher, NPC npc) : base(stateSwitcher, npc)
         {
-            StateSwitcher.SwitchState<WalkingToTradeState>();
+            _restingStateConfig = npc.Config.RestingStateConfig;
+            _timer = new Timer();
+        }
+
+        public override void Enter()
+        {
+            base.Enter();
+
+            _timer.Reset(_restingStateConfig.RestingTime);
+        }
+
+        public override void Update()
+        {
+            base.Update();
+
+            _timer.Update(Time.deltaTime);
+
+            if (_timer.IsRunning() == false)
+            {
+                StateSwitcher.SwitchState<WalkingToTradeState>();
+            }
         }
     }
 }
